@@ -1,0 +1,25 @@
+{
+    "name": "zachwatkins/terminal-chatbot",
+    "description": "A chatbot in the terminal.",
+    "type": "project",
+    "require": {
+        "laravel/prompts": "^0.1.21",
+        "rubix/ml": "^2.5"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ZachWatkins",
+            "email": "3458875+ZachWatkins@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
