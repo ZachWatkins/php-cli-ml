@@ -11,9 +11,14 @@ $name = text('What is your name?');
 
 $activity = select(
     label: "Hello, $name! What would you like to do?",
-    options: ['Create a new project', 'Go on an adventure', 'Hear interesting facts about Texas'],
+    options: ['Create a new project', 'Go on an adventure', 'Hear interesting facts about Texas', 'Train a model on Pokemon data'],
     default: 'Create a new project',
     hint: 'You can exit at any time by pressing Ctrl+C'
 );
 
 echo $name . ' wants to ' . strtolower($activity) . '.' . PHP_EOL;
+
+if ('Train a model on Pokemon data' === $activity) {
+    echo 'Fetching data...' . PHP_EOL;
+    require 'fetch-data.php';
+}
