@@ -15,21 +15,30 @@ $length = count($pokemon);
 
 function training(array $pokemon): bool
 {
-    return $pokemon['species']['data']['habitat'] ? true : false;
+    $species_name = $pokemon['species']['name'];
+    if ($pokemon['species']['data']['habitat']) {
+        $excluded = ['gmax', 'mega', 'mega-x', 'mega-y'];
+        if (in_array(substr($pokemon['name'], strlen($species_name) + 1), $excluded)) {
+            return false;
+        }
+        if ($pokemon['name'] === "{$species_name}-normal") {
+            return true;
+        }
+        return true;
+    }
+    return false;
 }
 
 function testing(array $pokemon): bool
 {
     $species_name = $pokemon['species']['name'];
     if ($pokemon['name'] !== $species_name) {
+        $excluded = ['gmax', 'mega', 'mega-x', 'mega-y'];
+        if (in_array(substr($pokemon['name'], strlen($species_name) + 1), $excluded)) {
+            return false;
+        }
         if ($pokemon['name'] === "{$species_name}-normal") {
             return true;
-        }
-        if ($pokemon['name'] === "{$species_name}-gmax") {
-            return false;
-        }
-        if ($pokemon['name'] === "{$species_name}-mega") {
-            return false;
         }
         if (!$pokemon['species']['data']['is_legendary'] && !$pokemon['species']['data']['is_mythical']) {
             return true;
